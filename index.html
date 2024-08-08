@@ -6,21 +6,63 @@
     <title>Learning Vue</title>
     <script src="https://unpkg.com/vue@3.0.2"></script>
     <style>
-      .box {
+      body {
+        background: #eee;
+        max-width: 960px;
+        margin: 20px auto;
+      }
+
+      p, h3, ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      li{
+        list-style-type: none;
+        background: #fff;
+        margin: 20px auto;
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      li.fav {
+        background-color: #ff9ed2;
+      }
+
+      /* .box {
         padding: 100px 0;
         width: 400px;
         text-align: center;
         background: #ddd;
         margin: 20px;
         display: inline-block;
-      }
+      } */
     </style>
   </head>
   <body>
     <h1>Hello, Vue</h1>
     <div id="app">
+      <!-- attribute binding -->
+      <!-- <a v-bind:href="url" href="https://google.com">Best Search Engine</a> -->
+      <!-- <a :href="url" href="https://google.com">Best Search Engine</a> -->
+
       <div v-if="showBooks">
-        <p>{{ title }} -- {{ author }} -- {{ review }} -- {{ age }}</p>
+        <!-- <p>{{ title }} -- {{ author }} -- {{ review }} -- {{ age }}</p> -->
+
+        <ul>
+          <li v-for="book in books" :class="{ fav: book.isFav}">
+            <img
+              :src="book.img"
+              :alt="book.title"
+              :style="{ width: '200px', height: '200px' }"
+            />
+            <h3>{{book.title}}</h3>
+            <p>{{book.author}}</p>
+          </li>
+        </ul>
         <!-- <button v-on:click="age++">Increase Age</button>
         <button v-on:click="age--">Decrease Age</button> -->
       </div>
@@ -30,7 +72,7 @@
         <span v-else>Show Books</span>
       </button>
 
-      <div v-show="showBooks">Currently showing books</div>
+      <!-- <div v-show="showBooks">Currently showing books</div> -->
 
       <!-- <div @click="title = 'The Witches'">Change book title</div> method - 1 -->
       <!-- method - 2 -->
@@ -39,10 +81,11 @@
 
       <br />
 
-      <div class="box" v-on:mouseover="handleEvent($event, 5)">mouseover(enter)</div>
+      <!--------------------- mouse events ---------------------->
+      <!-- <div class="box" v-on:mouseover="handleEvent($event, 5)">mouseover(enter)</div>
       <div class="box" @mouseleave="handleEvent">mouseleave</div>
       <div class="box" @dblclick="handleEvent">double click</div>
-      <div class="box" @mousemove="handleMousemove">Mousemove</div>
+      <div class="box" @mousemove="handleMousemove">Mousemove then Position {{ x }} {{ y }}</div> -->
     </div>
     <script src="app.js"></script>
   </body>
