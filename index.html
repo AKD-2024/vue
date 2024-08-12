@@ -53,7 +53,7 @@
         <!-- <p>{{ title }} -- {{ author }} -- {{ review }} -- {{ age }}</p> -->
 
         <ul>
-          <li v-for="book in books" :class="{ fav: book.isFav}" v-on:click="toggleFav(book)">
+          <li v-for="book in filteredBooks" :class="{ fav: book.isFav}" v-on:click="toggleFav(book)">
             <img
               :src="book.img"
               :alt="book.title"
